@@ -6,8 +6,8 @@ def main():
     f = Figlet(font='slant')
     print(f.renderText('themis')) 
 
-    hash_tag_list = ["donald trump", "hillary clinton", "barack obama", "bernie sanders"]
-    fetched_tweets_filename = "tweets.json"
+    hash_tag_list = ["jair bolsonaro"]
+    fetched_tweets_filename = "tweets.txt"
 
     twitter_streamer = TwitterStreamer()
     twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
