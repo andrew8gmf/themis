@@ -1,6 +1,6 @@
 from pyfiglet import Figlet
 
-from tweepy_streamer import TwitterStreamer, StdOutListener
+from classmodule import TwitterStreamer, StdOutListener
 
 def main():
     f = Figlet(font='slant')
