@@ -26,7 +26,6 @@ class TwitterStreamer():
         # This line filter Twitter Streams to capture data by the keywords: 
         stream.filter(track=hash_tag_list)
 
-# # # # TWITTER STREAM LISTENER # # # #
 class StdOutListener(tweepy.StreamListener):
     """
     This is a basic listener that just prints received tweets to stdout.
