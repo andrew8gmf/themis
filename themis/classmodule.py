@@ -1,5 +1,6 @@
 import tweepy
 import os
+import io
 
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
@@ -9,40 +10,37 @@ API_SECRET = os.environ.get("API_SECRET")
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = os.environ.get("ACCESS_TOKEN_SECRET")
 
-class TwitterStreamer():
-    """
-    Class for streaming and processing live tweets.
-    """
-    def __init__(self):
-        pass
+class StreamListener(tweepy.StreamListener):
 
-    def stream_tweets(self, fetched_tweets_filename, hash_tag_list):
-        # This handles Twitter authetification and the connection to Twitter Streaming API
-        listener = StdOutListener(fetched_tweets_filename)
-        auth = tweepy.OAuthHandler(API_KEY,API_SECRET)
-        auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
-        stream = tweepy.Stream(auth, listener)
+    def __init__(self, api, fetched_tweets_filename):
+        self.api = api
+        self.me = api.me()
 
-        # This line filter Twitter Streams to capture data by the keywords: 
-        stream.filter(track=hash_tag_list)
-
-class StdOutListener(tweepy.StreamListener):
-    """
-    This is a basic listener that just prints received tweets to stdout.
-    """
-    def __init__(self, fetched_tweets_filename):
         self.fetched_tweets_filename = fetched_tweets_filename
 
-    def on_data(self, data):
+    def on_status(self, tweet):
         try:
-            print(data)
-            with open(self.fetched_tweets_filename, 'a') as tf:
-                tf.write(data)
+            print(f"{tweet.user.name}:{tweet.text}")
+            with io.open(self.fetched_tweets_filename, 'a', encoding="utf-8") as tf:
+                tf.write(str(tweet))
             return True
         except BaseException as e:
             print("Error on_data %s" % str(e))
         return True
-          
 
     def on_error(self, status):
         print(status)
+
+class TweepyStreamer():
+
+    def __init__(self):
+        pass
+
+    def start(self, fetched_tweets_filename, keyword_list):
+        auth = tweepy.OAuthHandler(API_KEY,API_SECRET)
+        auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
+
+        api = tweepy.API(auth)
+        
+        self.stream = tweepy.Stream(api.auth, StreamListener(api, fetched_tweets_filename))
+        self.stream.filter(track=keyword_list)
