@@ -19,8 +19,14 @@ class StreamListener(tweepy.StreamListener):
         self.fetched_tweets_filename = fetched_tweets_filename
 
     def on_status(self, tweet):
-        try:
-            print(f"{tweet.user.name}:{tweet.text}")
+        try:   
+            print(f"\nUsername: {tweet.user.name}")
+            try:
+                print(f"Text: {tweet.extended_tweet['full_text']}")
+            except:
+                print(f"Text: {tweet.text}")		
+            print(f"Url: https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}")
+            
             with io.open(self.fetched_tweets_filename, 'a', encoding="utf-8") as tf:
                 tf.write(str(tweet))
             return True
