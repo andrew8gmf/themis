@@ -11,3 +11,7 @@ https://pypi.org/project/python-dotenv/
 https://stackoverflow.com/questions/41546883/what-is-the-use-of-python-dotenv
 
 https://www.devmedia.com.br/como-criar-minha-primeira-classe-em-python/38912
+
+https://youtu.be/A_wCp0xtsJQ
+
+https://realpython.com/twitter-bot-python-tweepy/#how-to-make-a-twitter-bot-in-python-with-tweepy
