@@ -10,7 +10,7 @@ def main():
     hash_tag_list = []
     hash_tag_list.append(hash_tag)
     
-    fetched_tweets_filename = "tweets.txt"
+    fetched_tweets_filename = "themis/tweets.txt"
 
     stream = TweepyStreamer()
     stream.start(fetched_tweets_filename, hash_tag_list)
