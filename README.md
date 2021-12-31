@@ -1,17 +1,12 @@
-https://trstringer.com/easy-and-nice-python-cli/
+## How to use
 
-http://docs.tweepy.org/en/latest/streaming_how_to.html
-
-https://github.com/vprusso/youtube_tutorials
-
-https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df
-
-https://pypi.org/project/python-dotenv/
-
-https://stackoverflow.com/questions/41546883/what-is-the-use-of-python-dotenv
-
-https://www.devmedia.com.br/como-criar-minha-primeira-classe-em-python/38912
-
-https://youtu.be/A_wCp0xtsJQ
-
-https://realpython.com/twitter-bot-python-tweepy/#how-to-make-a-twitter-bot-in-python-with-tweepy
+- Clone the repository
+- Install dependencies from requirements.txt:
+```shell
+pip install -r requirements.txt
+```
+- Enter themis folder
+- Enter on terminal command:
+```shell
+python __main__.py
+```
