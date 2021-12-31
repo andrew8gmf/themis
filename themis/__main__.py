@@ -4,9 +4,12 @@ from classmodule import TweepyStreamer
 
 def main():
     f = Figlet(font='slant')
-    print(f.renderText('themis')) 
+    print(f.renderText('themis'))
 
-    hash_tag_list = ["donald trump"]
+    hash_tag = input("\nEnter the hashtag: ")
+    hash_tag_list = []
+    hash_tag_list.append(hash_tag)
+    
     fetched_tweets_filename = "tweets.txt"
 
     stream = TweepyStreamer()
