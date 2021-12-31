@@ -1,3 +1,3 @@
 .env
-/themis/__pycache__
-/themis/tweets.txt
+tweets.txt
+__pycache__
